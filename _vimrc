@@ -7,6 +7,9 @@ call vundle#begin('~/vimfiles/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -79,9 +82,24 @@ function MyDiff()
   endif
 endfunction
 
-"keymapping
+" Leader key keymapping
 let mapleader=","
 nnoremap <Leader>rc :rightbelow vnew $MYVIMRC<CR>
+
+" Key Setting - resize windows
+ nnoremap <silent> <Leader>= :exe "resize +3"<CR>
+ nnoremap <silent> <Leader>- :exe "resize -3"<CR>
+ nnoremap <silent> <Leader>] :exe "vertical resize +8"<CR>
+ nnoremap <silent> <Leader>[ :exe "vertical resize -8"<CR>
+
+ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+ nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
+ nnoremap <silent> <Leader>} :exe "vertical resize " . (winheight(0) * 3/2)<CR>
+ nnoremap <silent> <Leader>{ :exe "vertical resize " . (winheight(0) * 2/3)<CR>
+
+"NERDTree
+let g:NERDTreeCopyCmd='cp-r'
+nmap <Leader>n :NERDTreeToggle<CR>
 
 noremap <C-h> <C-w>h 
 noremap <C-j> <C-w>j 
@@ -90,6 +108,3 @@ noremap <C-l> <C-w>l
 
 noremap <C-F> :NERDTreeFind<cr>
 
-"NERDTree
-let g:NERDTreeCopyCmd='cp-r'
-nmap <Leader>n :NERDTreeToggle<CR>
