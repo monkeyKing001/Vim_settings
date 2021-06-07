@@ -1,10 +1,12 @@
+" Vim with all enhancements
 filetype off
 set shellslash
+
 set rtp+=~/vimfiles/bundle/Vundle.vim
 call vundle#begin('~/vimfiles/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'scrooloose/nerdtree'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -24,6 +26,11 @@ source $VIMRUNTIME/vimrc_example.vim
 colorscheme koehler
 set number relativenumber
 
+"indent
+set smartindent
+set tabstop=4
+set expandtab
+set et
 
 set guifont=Consolas:h13:cANSI
 set guifontwide=Dotumche:h13:cDEFAULT
@@ -31,7 +38,9 @@ set guifontwide=Dotumche:h13:cDEFAULT
 set encoding=cp949
 set fileencodings=utf-8,cp949
 set langmenu=cp949
+"modifiable
 
+set modifiable
 " Use the internal diff if available.
 " Otherwise use the special 'diffexpr' for Windows.
 if &diffopt !~# 'internal'
@@ -70,6 +79,17 @@ function MyDiff()
   endif
 endfunction
 
+"keymapping
+let mapleader=","
+nnoremap <Leader>rc :rightbelow vnew $MYVIMRC<CR>
 
+noremap <C-h> <C-w>h 
+noremap <C-j> <C-w>j 
+noremap <C-k> <C-w>k 
+noremap <C-l> <C-w>l 
 
+noremap <C-F> :NERDTreeFind<cr>
 
+"NERDTree
+let g:NERDTreeCopyCmd='cp-r'
+nmap <Leader>n :NERDTreeToggle<CR>
