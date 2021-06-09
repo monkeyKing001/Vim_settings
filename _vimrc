@@ -34,6 +34,7 @@ set smartindent
 set tabstop=4
 set expandtab
 set et
+set shiftwidth=4
 
 set guifont=Consolas:h13:cANSI
 set guifontwide=Dotumche:h13:cDEFAULT
